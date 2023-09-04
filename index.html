@@ -1,0 +1,71 @@
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Helper</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Tokyo+Zoo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;400&display=swap" rel="stylesheet"
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
+</head>
+<body>
+    <div id="languageSelector" onclick="toggleLanguageOptions()">
+        <span id="currentLanguage">EN</span>
+        <div id="languageOptions">
+            <div data-lang="EN" onclick="setLanguage('EN')">EN</div>
+            <div data-lang="ES" onclick="setLanguage('ES')">ES</div>
+            <div data-lang="DE" onclick="setLanguage('DE')">DE</div>
+            <div data-lang="NL" onclick="setLanguage('NL')">NL</div>
+        </div>
+    </div>
+
+    <div id="welcomeMessage"></div>
+    <div id="genderPrompt"></div>
+    <div id="genderOptions">
+        <div class="genderButton" data-gender="male" onclick="selectGender('male')">♂</div>
+        <div class="genderButton" data-gender="female" onclick="selectGender('female')">♀</div>
+        <div class="genderButton" data-gender="nonbinary" onclick="selectGender('nonbinary')">⚧</div>
+    </div>
+    <textarea id="feedbackQuestions" placeholder="Write your feedback questions here..."></textarea>
+    <script src="script.js"></script>
+</body>
+</html>
+-->
+<?php
+    $nonce = bin2hex(random_bytes(16));
+    header("Content-Security-Policy: script-src 'self' 'nonce-$nonce'");
+?>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Noiseless feedback...</title>
+    <link href="icon.png" rel="icon" type="image/png"/>
+    <link href="styles.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Tokyo+Zoo&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;400&amp;display=swap" rel="stylesheet"/>
+</head>
+<body>
+    <div class="container">
+        <div class="cell corner"><iframe></iframe></div>
+        <div class="cell top"><iframe></iframe></div>
+        <div class="cell corner"><iframe></iframe></div>
+        <div class="cell left"><iframe></iframe></div>
+        <div class="main-cell"><iframe src="welcome.html"></iframe></div>
+        <div class="cell right"><iframe></iframe></div>
+        <div class="cell corner"><iframe></iframe></div>
+        <div class="cell bottom"><iframe></iframe></div>
+        <div class="cell corner"><iframe></iframe></div>
+    </div>
+    <script nonce="<?php echo $nonce; ?>" src="script.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<?php
+	$nonce = bin2hex(random_bytes(16));
+	header("Content-Security-Policy: script-src 'self' 'nonce-$nonce'");
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+	<link href="styles.css" rel="stylesheet"/>
+	<link href="https://fonts.googleapis.com" rel="preconnect"/>
+	<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+	<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;400&amp;display=swap" rel="stylesheet"/>
+</head>
+<body>
+	<div id="welcomeMessage"></div>
+    <div id="genderPrompt"></div>
+    <div id="genderOptions">
+        <div class="genderButton" data-gender="male" onclick="selectGender('male')">♂</div>
+        <div class="genderButton" data-gender="female" onclick="selectGender('female')">♀</div>
+        <div class="genderButton" data-gender="nonbinary" onclick="selectGender('nonbinary')">⚧</div>
+    </div>
+	<script nonce="<?php echo $nonce; ?>" src="but_first.js" type="module"></script>
+</body>
+</html>

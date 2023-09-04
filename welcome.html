@@ -1,0 +1,29 @@
+<?php
+	$nonce = bin2hex(random_bytes(16));
+	header("Content-Security-Policy: script-src 'self' 'nonce-$nonce'");
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+	<link href="styles.css" rel="stylesheet"/>
+	<link href="https://fonts.googleapis.com" rel="preconnect"/>
+	<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+	<link href="https://fonts.googleapis.com/css2?family=Zen+Tokyo+Zoo&amp;display=swap" rel="stylesheet"/>
+	<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;400&amp;display=swap" rel="stylesheet"/>
+</head>
+<body>
+	<div id="introSubTextContainer">
+		<div id="introSubText"></div>
+	</div>
+	<div id="buzzContainer">
+		<div id="buzzText">BU<span id="firstZ">Z</span>Z</div>
+	</div>
+	<div id="startContainer">
+		<button id="startButton"></button>
+	</div>
+	<script nonce="<?php echo $nonce; ?>" src="welcome.js" type="module"></script>
+</body>
+</html>
