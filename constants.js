@@ -25,21 +25,44 @@ export const translations = {
     }
 };
 
-export const defaultLanguage = 'EN';
+export function defaultLanguage() {
+    const html = document.querySelector('html');
+    return html.lang;
+}
+
+export function updateDocLanguage() {
+    const html = document.querySelector('html');
+    html.lang = currentLanguage().toLocaleLowerCase();
+}
+
+export function setCurrentLanguage(newLang) {
+    localStorage.setItem('selectedLanguage', newLang);
+}
+
+export function retrieveLanguage() {
+    return localStorage.getItem('selectedLanguage');
+}
 
 export function currentLanguage() {
+    
+    var savedLanguage = retrieveLanguage();
+    if (savedLanguage) {
+        var current = savedLanguage;
+    } else {
+        var current = defaultLanguage();
+    }
 
-    const savedLanguage = localStorage.getItem('selectedLanguage');
-    currentLanguage = savedLanguage ? savedLanguage : defaultLanguage;
-    return currentLanguage.toUpperCase();
+    if (current) {
+        return current.toUpperCase();
+    } else {
+        console.log("wut");
+        return "EN";
+    }
 }
 
 export function currentTranslations() {
 
-    var language = currentLanguage.toUpperCase;
-    if (!translations[language]) {
-        return translations[defaultLanguage];
-    }
+    var language = currentLanguage().toUpperCase();
     return translations[language];
 }
 
@@ -48,14 +71,18 @@ export var texts = currentTranslations();
 export const Modules = {
     Main: 0,
     Welcome: 1,
-    ButFirst: 2
+    ButFirst: 2,
+    Language: 3,
+    Options: 4
 }
 
 export const Events = {
     LanguageChanged: 1,
     Started: 2,
     GenderSelected: 3,
-    HumsDefined: 4
+    HumsDefined: 4,
+    ShowOptions: 5,
+    Selected: 6
 }
 
 export function MID(thismodule,event) {
