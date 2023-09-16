@@ -6,9 +6,6 @@ window.onload = () => {
 
 document.addEventListener('DOMContentLoaded', function() {
 
-  const html = document.querySelector('html');
-  html.lang = K.currentLanguage();
-
   applyTranslations();
   
   const startB = document.getElementById("startButton");
@@ -18,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 window.addEventListener('message', function(event) {
- 
   switch (event.data) {
     case MID(Modules.Main, Events.LangageChanged):
       applyTranslations();
