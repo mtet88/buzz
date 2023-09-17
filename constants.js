@@ -110,11 +110,13 @@ export async function typeWriterEffect(elementId, text, callback) {
 }
 
 export function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 export function check(externalWindow) {
-    debug = (window.location.href.indexOf('&debug=now') !== -1)
+    const hostname = window.location.hostname;
+    const regex = /^debug\./;
+    debug = regex.test(hostname);
 }
 
 export function toggleRule(selector, newRule) {
