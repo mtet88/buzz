@@ -67,6 +67,7 @@ export function currentTranslations() {
 }
 
 export var texts = currentTranslations();
+export var debug = false;
 
 export const Modules = {
     Main: 0,
@@ -111,3 +112,28 @@ export async function typeWriterEffect(elementId, text, callback) {
 export function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+export function check(externalWindow) {
+    debug = (window.location.href.indexOf('&debug=now') !== -1)
+}
+
+export function toggleRule(selector, newRule) {
+    const stylesheet = document.styleSheets[0];
+    let ruleIndex;
+  
+    for (let i = 0; i < stylesheet.cssRules.length; i++) {
+      if (stylesheet.cssRules[i].selectorText === selector) {
+        ruleIndex = i;
+        break;
+      }
+    }
+  
+    if (ruleIndex !== undefined) {
+      stylesheet.deleteRule(ruleIndex);
+    }
+  
+    // Agregar la nueva regla
+    stylesheet.addRule(selector, newRule);
+  }
+  
+  

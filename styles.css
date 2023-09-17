@@ -16,6 +16,10 @@
   }
 }
 
+.debug {
+  visibility: hidden;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -235,6 +239,7 @@ iframe {
 .option:hover {
 
 }
+
 
 /* LANGUAGE MODES */
 
