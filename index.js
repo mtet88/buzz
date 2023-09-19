@@ -1,5 +1,8 @@
 import * as K from "./constants.js";
 
+K.check(window)
+K.toggleRule(".debug", "visibility: " + (K.debug ? "visible;" : "hidden;"));
+
 window.onload = () => {
     
 }

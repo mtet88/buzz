@@ -2,6 +2,9 @@ import * as K from './constants.js';
 
 window.onload = () => {
   changeColor();
+
+  const fontSize = window.getComputedStyle(document.documentElement).getPropertyValue('font-size');
+  document.getElementById('rem-base').innerHTML = fontSize
 };
 
 document.addEventListener('DOMContentLoaded', function() {
